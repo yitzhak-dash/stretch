@@ -1,1 +1,4 @@
+# Webstorm IDE
 .idea
+# node packages
+node_modules
