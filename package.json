@@ -11,5 +11,14 @@
     "url": "https://github.com/yitzhak-dash/stretch"
   },
   "author": "Yitzhak Dashevsky",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "lodash": "^4.17.11"
+  }
 }
