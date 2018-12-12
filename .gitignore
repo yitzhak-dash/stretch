@@ -2,3 +2,5 @@
 .idea
 # node packages
 node_modules
+# js
+dist
