@@ -1,15 +1,18 @@
-import restify from 'restify';
+import restify, { Server } from 'restify';
 import config from 'config';
 
+import userRouter from './router/users';
 
-const server = restify.createServer();
+const getRouters = () => [userRouter];
 
-server.get('/', (req, res, next) => {
-    res.json('hello');
-    next();
-});
+function createServer(routers: { applyRoutes: (server: Server, prefix?: String) => void }[]): Server {
+    const server = restify.createServer();
+    routers.forEach(router => router.applyRoutes(server));
+    return server;
+}
 
-server.listen(config.get('web.port'), () => {
-    console.log(`App is running on port: ${config.get('web.port')}`);
-    console.log(`Press CTRL-C to stop\n`);
-});
+createServer(getRouters())
+    .listen(config.get('web.port'), () => {
+        console.log(`App is running on port: ${config.get('web.port')}`);
+        console.log(`Press CTRL-C to stop\n`);
+    });
