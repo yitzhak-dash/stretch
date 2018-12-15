@@ -8,6 +8,19 @@ userRouter.get('/user', (req, res, next) => {
     next();
 });
 
+userRouter.get('/user/:id', (req, res, next) => {
+    res.json('moshe');
+    next();
+});
+
+userRouter.post('/user', (req, res) => {
+    res.json('good');
+});
+
+userRouter.put('/user/:id', (req, res) => {
+    res.json('good');
+});
+
 userRouter.get('/user/error', (req, res, next) => {
     res.send(new errors.InternalServerError('BIG BANG BOOM!!!'));
     next();
