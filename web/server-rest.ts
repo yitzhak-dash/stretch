@@ -9,8 +9,10 @@ function createServer(routers: { applyRoutes: (server: Server, prefix?: String) 
     return server;
 }
 
-createServer(routers)
+const app = createServer(routers)
     .listen(config.get('web.port'), () => {
         console.log(`App is running on port: ${config.get('web.port')}`);
         console.log(`Press CTRL-C to stop\n`);
     });
+
+export default app;
