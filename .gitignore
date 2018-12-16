@@ -1,6 +1,9 @@
-# Webstorm IDE
+# Editors, IDE
 .idea
-# node packages
+# Dependency directory
 node_modules
-# js
+# Ignore built ts files
 dist
+# Coverage reports
+coverage
+
