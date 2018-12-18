@@ -3,6 +3,12 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
