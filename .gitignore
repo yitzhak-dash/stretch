@@ -6,4 +6,5 @@ node_modules
 dist
 # Coverage reports
 coverage
-
+# secrets
+.env
