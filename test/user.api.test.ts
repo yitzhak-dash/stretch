@@ -9,6 +9,10 @@ beforeAll(async () => {
     server = await initApp();
 });
 
+afterAll(() => {
+    server.close();
+});
+
 describe('GET /user/:id', () => {
     test('should return 200 OK', async () => {
         return request(server)
