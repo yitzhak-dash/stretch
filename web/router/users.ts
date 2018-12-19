@@ -1,6 +1,7 @@
 import router from 'restify-router';
-import { Request } from 'restify';
+import { Request, Response } from 'restify';
 import { getManager } from 'typeorm';
+import * as _ from 'lodash';
 
 import { User } from '../entities/user';
 import validator from './request-validator';
@@ -15,10 +16,13 @@ userRouter.get('/user', async (req: Request, res, next) => {
     next();
 });
 
-userRouter.get('/user/:id', async (req: Request, res, next) => {
+userRouter.get('/user/:id', async (req: Request, res: Response, next) => {
     const id = req.params.id;
     const manager = getManager();
     const user = await manager.findOne(User, id);
+    if (_.isEmpty(user)) {
+        return res.send(204);
+    }
     res.json(user);
     next();
 });

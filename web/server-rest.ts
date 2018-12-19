@@ -1,12 +1,12 @@
 import 'reflect-metadata';
 import restify, { Server } from 'restify';
-import config              from 'config';
-import routers             from './router/index';
-import { connect }         from './data-store/connector';
+import config from 'config';
+import routers from './router/index';
+import { connect } from './data-store/connector';
 
 let server: Server;
 
-async function initApp() {
+export async function initApp() {
     server = createServer(routers).listen(config.get('web.port'), onListen);
     try {
         await connect();
@@ -15,6 +15,7 @@ async function initApp() {
         console.log(err.message);
         closeServerAndExit();
     }
+    return server;
 }
 
 function closeServerAndExit() {
@@ -43,6 +44,5 @@ function createServer(routers: { applyRoutes: (server: Server, prefix?: String) 
     return server;
 }
 
-(async () => await initApp())();
+export default initApp;
 
-export default server;

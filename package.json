@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run serve",
-    "serve": "node dist/server-rest.js",
-    "watch-node": "nodemon dist/server-rest.js",
+    "serve": "node dist/app.js",
+    "watch-node": "nodemon dist/app.js",
     "watch-ts": "tsc -w",
     "build": "npm run build-ts && npm run tslint",
     "build-ts": "tsc",
@@ -26,6 +26,7 @@
     "@types/config": "0.0.34",
     "@types/jest": "^23.3.10",
     "@types/joi": "^14.0.1",
+    "@types/lodash": "^4.14.119",
     "@types/restify": "^7.2.6",
     "@types/restify-errors": "^4.3.3",
     "@types/supertest": "^2.0.7",

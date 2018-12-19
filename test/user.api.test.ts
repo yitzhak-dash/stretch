@@ -1,20 +1,24 @@
 // @ts-ignore
-import request     from 'supertest';
-import * as expect from 'chai';
-import server      from '../web/server-rest';
+import request from 'supertest';
+
+import { initApp } from '../web/server-rest';
+
+let server: any;
+
+beforeAll(async () => {
+    server = await initApp();
+});
 
 describe('GET /user/:id', () => {
-    it('should return 200 OK', () => {
+    test('should return 200 OK', async () => {
         return request(server)
             .get('/user/1')
             .expect(200);
     });
-    it('should return user <moshe>', () => {
+
+    test('should return 204 - no content', async () => {
         return request(server)
-            .get('/user/1')
-            .expect(200)
-            .then(response => {
-                expect.expect(response.body).to.equal('moshe');
-            });
+            .get('/user/100000')
+            .expect(204);
     });
 });
