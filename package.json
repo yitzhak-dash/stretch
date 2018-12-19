@@ -25,6 +25,7 @@
     "@types/chai": "^4.1.7",
     "@types/config": "0.0.34",
     "@types/jest": "^23.3.10",
+    "@types/joi": "^14.0.1",
     "@types/restify": "^7.2.6",
     "@types/restify-errors": "^4.3.3",
     "@types/supertest": "^2.0.7",
@@ -40,6 +41,7 @@
   },
   "dependencies": {
     "config": "^3.0.0",
+    "joi": "^14.3.0",
     "lodash": "^4.17.11",
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.12",

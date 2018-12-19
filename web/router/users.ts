@@ -1,9 +1,10 @@
 import router from 'restify-router';
 import { Request } from 'restify';
-import errors from 'restify-errors';
 import { getManager } from 'typeorm';
 
 import { User } from '../entities/user';
+import validator from './request-validator';
+import { sendValidationError } from './router-helper';
 
 const userRouter = new router.Router();
 
@@ -23,6 +24,10 @@ userRouter.get('/user/:id', async (req: Request, res, next) => {
 });
 
 userRouter.post('/user', async (req: Request, res) => {
+    const validationStatus = validator().validateUser(req.body);
+    if (validationStatus.error) {
+        return sendValidationError(res, validationStatus);
+    }
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -35,11 +40,6 @@ userRouter.post('/user', async (req: Request, res) => {
 
 userRouter.put('/user/:id', (req, res) => {
     res.json('good');
-});
-
-userRouter.get('/user/error', (req, res, next) => {
-    res.send(new errors.InternalServerError('BIG BANG BOOM!!!'));
-    next();
 });
 
 export default userRouter;
