@@ -13,7 +13,7 @@
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "watch-tslint": "chokidar web/**/*.ts -c \"npm run tslint\" --initial --verbose",
     "watch": "npm run watch-node & npm run watch-ts & npm run watch-tslint",
-    "test": "jest --forceExit --coverage --verbose --detectOpenHandles"
+    "test": "jest --coverage --verbose --detectOpenHandles"
   },
   "repository": {
     "type": "git",
