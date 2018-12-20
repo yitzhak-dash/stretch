@@ -12,7 +12,7 @@ async function initApp() {
         await connect();
         console.log('DB connected');
     } catch (err) {
-        console.log(err.message);
+        console.error(err.message);
         closeServerAndExit();
     }
     return server;

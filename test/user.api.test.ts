@@ -8,10 +8,10 @@ let server: any;
 beforeAll(async () => {
     server = await initApp();
 });
-//
-// afterAll(() => {
-//     server.close();
-// });
+
+afterAll(() => {
+    server.close();
+});
 
 test('Test for you travis', () => expect(1 === 1).toBeTruthy());
 
