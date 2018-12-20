@@ -1,17 +1,17 @@
 // @ts-ignore
-import request from 'supertest';
+// import request from 'supertest';
 
-import { initApp } from '../web/server-rest';
+// import { initApp } from '../web/server-rest';
 
-let server: any;
-
-beforeAll(async () => {
-    server = await initApp();
-});
-
-afterAll(() => {
-    server.close();
-});
+// let server: any;
+//
+// beforeAll(async () => {
+//     server = await initApp();
+// });
+//
+// afterAll(() => {
+//     server.close();
+// });
 
 test('Test for you travis', () => expect(1 === 1).toBeTruthy());
 //
