@@ -41,7 +41,7 @@ describe('GET /user/:id', () => {
 
     test('should return 204 - no content', () => {
         return request(server)
-            .get('/user/2')
+            .get('/user/100000')
             .expect(204);
     });
 });
