@@ -19,10 +19,10 @@ async function initApp() {
 }
 
 function closeServerAndExit() {
-    // server.close(() => {
-    //     console.log('App is stopped');
-    //     process.exit(1);
-    // });
+    server.close(() => {
+        console.log('App is stopped');
+        // process.exit(1);
+    });
 }
 
 const onListen = () => {
