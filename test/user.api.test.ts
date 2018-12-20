@@ -1,5 +1,5 @@
 // @ts-ignore
-import request from 'supertest';
+// import request from 'supertest';
 
 import initApp from '../web/server-rest';
 
