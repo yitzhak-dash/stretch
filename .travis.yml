@@ -6,7 +6,6 @@ services:
 before_script:
   - npm install tsc -g
   - npm install
-  - node -v
 script:
   - npm run build-ts
   - npm run tslint
