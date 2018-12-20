@@ -16,10 +16,9 @@ afterAll(() => {
     server.close();
 });
 
-// test('Test for you travis', () => expect(1 === 1).toBeTruthy());
+test('Test for you travis', () => expect(1 === 1).toBeTruthy());
 
-describe('GET /user/:id', () => {
-    test('Test for you travis', () => expect(1 === 1).toBeTruthy());
+// describe('GET /user/:id', () => {
     // test('should return 200 OK', () => {
     //     return request(server)
     //         .get('/user/1')
@@ -31,4 +30,4 @@ describe('GET /user/:id', () => {
     //         .get('/user/100000')
     //         .expect(204);
     // });
-});
+// });
