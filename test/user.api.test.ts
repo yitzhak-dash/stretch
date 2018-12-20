@@ -14,7 +14,7 @@ afterAll(() => {
 });
 
 describe('POST /user', () => {
-    test('', () => {
+    test('should return 200 OK', () => {
         return request(server)
             .post('/user')
             .send({
