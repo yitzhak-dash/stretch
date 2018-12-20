@@ -22,6 +22,14 @@ describe('POST /user', () => {
                 'lastName': 'Perez'
             }).expect(200);
     });
+    test('should return 404 when validation is failed', () => {
+        return request(server)
+            .post('/user')
+            .send({
+                'firstName': 'A',
+                'lastName': 'Perez'
+            }).expect(404);
+    });
 });
 
 describe('GET /user/:id', () => {
