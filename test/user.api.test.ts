@@ -6,9 +6,7 @@ import initApp from '../web/server-rest';
 let server: any;
 
 beforeAll(async () => {
-    expect.assertions(1);
-
-    initApp().then(ser => {
+    return initApp().then(ser => {
         server = ser;
     });
 });
