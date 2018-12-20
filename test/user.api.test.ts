@@ -22,13 +22,13 @@ describe('POST /user', () => {
                 'lastName': 'Perez'
             }).expect(200);
     });
-    test('should return 404 when validation is failed', () => {
+    test('should return 400 when validation is failed', () => {
         return request(server)
             .post('/user')
             .send({
                 'firstName': 'A',
                 'lastName': 'Perez'
-            }).expect(404);
+            }).expect(400);
     });
 });
 
