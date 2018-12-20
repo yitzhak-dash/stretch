@@ -6,6 +6,7 @@ services:
 before_install:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('password') where User='root';FLUSH PRIVILEGES;"
   - sudo service mysql restart
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
 before_script:
   - npm install tsc -g
   - npm install
