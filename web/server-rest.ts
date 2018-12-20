@@ -6,7 +6,7 @@ import { connect } from './data-store/connector';
 
 let server: Server;
 
-async function initApp() {
+export async function initApp() {
     server = createServer(routers).listen(config.get('web.port'), onListen);
     try {
         await connect();
@@ -43,6 +43,4 @@ function createServer(routers: { applyRoutes: (server: Server, prefix?: String) 
     routers.forEach(router => router.applyRoutes(server));
     return server;
 }
-
-export default initApp;
 

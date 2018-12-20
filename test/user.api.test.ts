@@ -1,7 +1,7 @@
 // @ts-ignore
 import request from 'supertest';
 
-import initApp from '../web/server-rest';
+import { initApp } from '../web/server-rest';
 
 let server: any;
 
