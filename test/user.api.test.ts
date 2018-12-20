@@ -5,14 +5,14 @@ import initApp from '../web/server-rest';
 
 let server: any;
 
-beforeAll(() => {
+beforeEach(() => {
     expect.assertions(1);
     return initApp().then(ser => {
         server = ser;
     }).catch(err => console.log(err));
 });
 
-afterAll(() => {
+afterEach(() => {
     server.close();
 });
 
