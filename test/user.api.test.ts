@@ -6,11 +6,11 @@ import { initApp } from '../web/server-rest';
 let server: any;
 
 beforeAll(async () => {
-    server = await initApp();
+    // server = await initApp();
 });
 
 afterAll(() => {
-    server.close();
+    // server.close();
 });
 
 test('Test for you travis', () => expect(1 === 1).toBeTruthy());
