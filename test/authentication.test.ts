@@ -8,12 +8,7 @@ describe('jsonwebtoken', () => {
         expect(res.user).toBe('moshe');
     });
     test('Thrown error if the token is expired', async () => {
-        const token = jwt.sign({user: 'moshe'}, secret, {expiresIn: 1});
-        jest.setTimeout(1100);
-        try {
-            await jwt.verify(token, secret);
-        } catch (err) {
-            expect(err.nackCount).toBe('TokenExpiredError');
-        }
+        const token = jwt.sign({user: 'moshe'}, secret, {expiresIn: -1});
+        expect(() => jwt.verify(token, secret)).toThrow('jwt expired');
     });
 });
