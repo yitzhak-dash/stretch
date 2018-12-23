@@ -1,7 +1,7 @@
 import { ValidationResult } from 'joi';
-import { Response } from 'restify';
+import { Next } from 'restify';
 import errors from 'restify-errors';
 
 
-export const sendValidationError = (res: Response, validationRes: ValidationResult<any>) =>
-    res.send(new errors.BadRequestError(validationRes.error));
+export const sendValidationError = (next: Next, validationRes: ValidationResult<any>) =>
+    next(new errors.BadRequestError(validationRes.error));

@@ -1,5 +1,5 @@
 import router from 'restify-router';
-import { Request, Response } from 'restify';
+import { Next, Request, Response } from 'restify';
 import { getManager } from 'typeorm';
 import * as _ from 'lodash';
 
@@ -27,10 +27,10 @@ userRouter.get('/user/:id', async (req: Request, res: Response, next) => {
     next();
 });
 
-userRouter.post('/user', async (req: Request, res) => {
+userRouter.post('/user', async (req: Request, res: Response, next: Next) => {
     const validationStatus = validator().validateUser(req.body);
     if (validationStatus.error) {
-        return sendValidationError(res, validationStatus);
+        return sendValidationError(next, validationStatus);
     }
     const user = {
         firstName: req.body.firstName,
@@ -40,6 +40,7 @@ userRouter.post('/user', async (req: Request, res) => {
     const manager = getManager();
     const result = await manager.save(User, user);
     res.json(result);
+    next();
 });
 
 userRouter.put('/user/:id', (req, res) => {
