@@ -12,3 +12,12 @@ describe('jsonwebtoken', () => {
         expect(() => jwt.verify(token, secret)).toThrow('jwt expired');
     });
 });
+
+describe('POST /auth', () => {
+    xtest('return 400 if username is not valid', () => {
+        throw new Error();
+    });
+    xtest('return 400 if password is not valid', () => {
+        throw new Error();
+    });
+});
