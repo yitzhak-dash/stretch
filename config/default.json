@@ -7,5 +7,9 @@
     "port": 3306,
     "username": "root",
     "password": "password"
+  },
+  "jwt": {
+    "secret": "secret",
+    "expiresIn": "10m"
   }
 }
