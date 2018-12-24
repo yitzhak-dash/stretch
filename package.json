@@ -51,6 +51,7 @@
     "reflect-metadata": "^0.1.12",
     "restify": "^7.3.0",
     "restify-errors": "^6.1.1",
+    "restify-jwt-community": "^1.0.9",
     "restify-router": "^0.5.1",
     "typeorm": "^0.2.9"
   }
