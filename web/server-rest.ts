@@ -45,13 +45,6 @@ function applyPlugins(server: Server) {
 function createServer(routers: { applyRoutes: (server: Server, prefix?: String) => void }[] = []): Server {
     const server = restify.createServer();
     applyPlugins(server);
-    server.post('/auth', (req, res, next) => {
-        let {username, password} = req.body;
-        // todo: validate username and password and then:
-        const token = jwt.sign({username}, config.get('jwt.secret'), {expiresIn: config.get('jwt.expiresIn')});
-        const decoded = jwt.verify(token,config.get('jwt.secret') ) as any;
-        res.send({iat: new Date(decoded.iat * 1000), exp: new Date(decoded.exp * 1000), token});
-    });
     routers.forEach(router => router.applyRoutes(server));
     return server;
 }
