@@ -43,6 +43,7 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
+    "bcrypt": "^3.0.3",
     "config": "^3.0.0",
     "joi": "^14.3.0",
     "jsonwebtoken": "^8.4.0",
