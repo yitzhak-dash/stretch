@@ -11,6 +11,13 @@
   "jwt": {
     "secret": "secret",
     "expiresIn": "10m"
+  },
+  "admin": {
+    "firstName": "Avi",
+    "lastName": "Perez",
+    "password": "password123",
+    "email": "email@email.com",
+    "isActive": true
   }
 }
 
