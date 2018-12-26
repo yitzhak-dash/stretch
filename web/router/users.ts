@@ -7,6 +7,7 @@ import { User } from '../entities/user';
 import validator from '../services/request-validator';
 import { sendValidationError } from './router-helper';
 import { hash } from '../services/auth.service';
+import { saveUser } from '../services/user.service';
 
 const userRouter = new router.Router();
 
@@ -34,14 +35,14 @@ userRouter.post('/user', async (req: Request, res: Response, next: Next) => {
         return sendValidationError(next, validationStatus);
     }
     const user = {
+        id: 1,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         password: hash(req.body.password),
         isActive: false
     };
-    const manager = getManager();
-    const result = await manager.save(User, user);
+    const result = saveUser(user);
     res.json(result);
     next();
 });

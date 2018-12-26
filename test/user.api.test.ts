@@ -5,6 +5,7 @@ import Chance from 'chance';
 
 import initApp from '../web/server-rest';
 import { User } from '../web/entities/user';
+import config from 'config';
 
 let server: any;
 const invalidToken = 'invalidToken.invalidToken.invalidToken';
@@ -21,7 +22,7 @@ beforeAll(async () => {
     server = await initApp();
     validToken = await request(server)
         .post('/auth')
-        .send({username: 'hello@bro.com', password: 'password123456'})
+        .send({username: config.get<User>('admin').email, password: config.get<User>('admin').password})
         .then(response => response.body.token);
 });
 
