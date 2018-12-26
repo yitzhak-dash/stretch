@@ -10,6 +10,6 @@
   },
   "jwt": {
     "secret": "secret",
-    "expiresIn": "10m"
+    "expiresIn": "1d"
   }
 }
