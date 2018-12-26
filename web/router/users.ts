@@ -4,8 +4,9 @@ import { getManager } from 'typeorm';
 import * as _ from 'lodash';
 
 import { User } from '../entities/user';
-import validator from './request-validator';
+import validator from '../services/request-validator';
 import { sendValidationError } from './router-helper';
+import { hash } from '../services/auth.service';
 
 const userRouter = new router.Router();
 
@@ -35,6 +36,8 @@ userRouter.post('/user', async (req: Request, res: Response, next: Next) => {
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
+        password: hash(req.body.password),
         isActive: false
     };
     const manager = getManager();
@@ -46,5 +49,6 @@ userRouter.post('/user', async (req: Request, res: Response, next: Next) => {
 userRouter.put('/user/:id', (req, res) => {
     res.json('good');
 });
+
 
 export default userRouter;

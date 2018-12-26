@@ -23,7 +23,9 @@
   "author": "Yitzhak Dashevsky",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/chai": "^4.1.7",
+    "@types/chance": "^1.0.1",
     "@types/config": "0.0.34",
     "@types/jest": "^23.3.10",
     "@types/joi": "^14.0.1",
@@ -44,6 +46,7 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.3",
+    "chance": "^1.0.18",
     "config": "^3.0.0",
     "joi": "^14.3.0",
     "jsonwebtoken": "^8.4.0",
