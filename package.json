@@ -23,10 +23,13 @@
   "author": "Yitzhak Dashevsky",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/chai": "^4.1.7",
+    "@types/chance": "^1.0.1",
     "@types/config": "0.0.34",
     "@types/jest": "^23.3.10",
     "@types/joi": "^14.0.1",
+    "@types/jsonwebtoken": "^8.3.0",
     "@types/lodash": "^4.14.119",
     "@types/restify": "^7.2.6",
     "@types/restify-errors": "^4.3.3",
@@ -42,13 +45,17 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
+    "bcrypt": "^3.0.3",
+    "chance": "^1.0.18",
     "config": "^3.0.0",
     "joi": "^14.3.0",
+    "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.12",
     "restify": "^7.3.0",
     "restify-errors": "^6.1.1",
+    "restify-jwt-community": "^1.0.9",
     "restify-router": "^0.5.1",
     "typeorm": "^0.2.9"
   }

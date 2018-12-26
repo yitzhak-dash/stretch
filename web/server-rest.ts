@@ -1,8 +1,13 @@
 import 'reflect-metadata';
 import restify, { Server } from 'restify';
 import config from 'config';
+import jwt from 'jsonwebtoken';
+
+const rjwt = require('restify-jwt-community');
+
 import routers from './router/index';
 import { connect } from './data-store/connector';
+import { getConnection } from 'typeorm';
 
 let server: Server;
 
@@ -21,6 +26,7 @@ async function initApp() {
 function closeServerAndExit() {
     server.close(() => {
         console.log('App is stopped');
+        getConnection().close();
         // process.exit(1);
     });
 }
@@ -35,6 +41,7 @@ function applyPlugins(server: Server) {
     server.use(restify.plugins.acceptParser(server.acceptable));
     server.use(restify.plugins.bodyParser());
     server.use(restify.plugins.queryParser());
+    server.use(rjwt(config.get('jwt')).unless({path: ['/auth']}));
 }
 
 function createServer(routers: { applyRoutes: (server: Server, prefix?: String) => void }[] = []): Server {

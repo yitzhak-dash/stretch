@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
+
 @Entity()
 export class User {
 
@@ -7,8 +8,13 @@ export class User {
     id: number;
 
     @Column()
-    firstName: string;
+    email: string = '';
 
+    @Column({select: false})
+    password?: string;
+
+    @Column()
+    firstName: string;
 
     @Column()
     lastName: string;

@@ -1,6 +1,7 @@
 import userRouter from './users';
+import authRouter from './auth';
 
 // add here defined routers
-const createRouters = () => [userRouter];
+const createRouters = () => [authRouter, userRouter];
 
 export default createRouters();
