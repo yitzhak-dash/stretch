@@ -2,10 +2,10 @@
 import request from 'supertest';
 import { getManager } from 'typeorm';
 import Chance from 'chance';
+import config from 'config';
 
 import initApp from '../web/server-rest';
 import { User } from '../web/entities/user';
-import config from 'config';
 
 let server: any;
 const invalidToken = 'invalidToken.invalidToken.invalidToken';
@@ -20,9 +20,10 @@ const validUser = () => ({
 
 beforeAll(async () => {
     server = await initApp();
+    const defaultUser: User = config.get<User>('admin');
     validToken = await request(server)
         .post('/auth')
-        .send({username: config.get<User>('admin').email, password: config.get<User>('admin').password})
+        .send({username: defaultUser.email, password: defaultUser.password})
         .then(response => response.body.token);
 });
 

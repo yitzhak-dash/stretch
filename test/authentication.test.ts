@@ -1,8 +1,10 @@
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 import { Server } from 'restify';
+import config from 'config';
 
 import initApp from '../web/server-rest';
+import { User } from '../web/entities/user';
 
 const secret = 'secret';
 let server: Server;
@@ -29,16 +31,25 @@ describe('jsonwebtoken', () => {
 });
 
 describe('POST /auth', () => {
-    xtest('return 200 username and password are valid', () => {
-        throw new Error();
-    });
-    test('return 403 if username is wrong', () => {
+    test('return 200 username and password are valid', () => {
+        const defaultUser: User = config.get<User>('admin');
         return request(server)
             .post('/auth')
-            .send({username: 'not-existed-user', password: 'zzz'})
+            .send({username: defaultUser.email, password: defaultUser.password})
+            .expect(200);
+    });
+    test('return 403 if username is wrong', () => {
+        const defaultUser: User = config.get<User>('admin');
+        return request(server)
+            .post('/auth')
+            .send({username: 'a' + defaultUser.email, password: defaultUser.password})
             .expect(403);
     });
-    xtest('return 403 if password is wrong', () => {
-        throw new Error();
+    test('return 403 if password is wrong', () => {
+        const defaultUser: User = config.get<User>('admin');
+        return request(server)
+            .post('/auth')
+            .send({username: defaultUser.email, password: 'a' + defaultUser.password})
+            .expect(403);
     });
 });

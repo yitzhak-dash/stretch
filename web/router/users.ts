@@ -35,13 +35,12 @@ userRouter.post('/user', async (req: Request, res: Response, next: Next) => {
         return sendValidationError(next, validationStatus);
     }
     const user = {
-        id: 1,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         password: hash(req.body.password),
         isActive: false
-    };
+    } as User;
     const result = saveUser(user);
     res.json(result);
     next();
