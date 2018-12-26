@@ -1,6 +1,21 @@
 import jwt from 'jsonwebtoken';
+import request from 'supertest';
+import { Server } from 'restify';
+
+import initApp from '../web/server-rest';
 
 const secret = 'secret';
+let server: Server;
+
+
+beforeAll(async () => {
+    server = await initApp();
+});
+
+afterAll(() => {
+    server.close();
+});
+
 describe('jsonwebtoken', () => {
     test('should return payload after verifying', () => {
         const token = jwt.sign({user: 'moshe'}, secret);
@@ -14,10 +29,16 @@ describe('jsonwebtoken', () => {
 });
 
 describe('POST /auth', () => {
-    xtest('return 400 if username is not valid', () => {
+    xtest('return 200 username and password are valid', () => {
         throw new Error();
     });
-    xtest('return 400 if password is not valid', () => {
+    test('return 403 if username is wrong', () => {
+        return request(server)
+            .post('/auth')
+            .send({username: 'not-existed-user', password: 'zzz'})
+            .expect(403);
+    });
+    xtest('return 403 if password is wrong', () => {
         throw new Error();
     });
 });
