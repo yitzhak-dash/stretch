@@ -1,1 +1,1 @@
-### Welcome
+### Bones extracting project.
