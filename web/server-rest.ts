@@ -7,17 +7,14 @@ const rjwt = require('restify-jwt-community');
 
 import routers from './router/index';
 import { connect } from './data-store/connector';
-import { getConnection, getConnectionManager } from 'typeorm';
+import { getConnection } from 'typeorm';
 
 let server: Server;
 
 async function initApp() {
     server = createServer(routers).listen(config.get('web.port'), onListen);
     try {
-        const isConnected = getConnectionManager().has('default');
-        if (!isConnected) {
-            await connect();
-        }
+        await connect();
         console.log('DB connected');
     } catch (err) {
         console.error(err.message);
